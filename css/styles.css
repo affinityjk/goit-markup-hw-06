@@ -536,7 +536,12 @@ img {
 /* Clients */
 .clients-list.list {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+
+.clients-list-item:not(:last-child) {
+  margin-right: 30px;
+  margin-left: auto;
 }
 
 .clients-list-item a {
@@ -577,7 +582,7 @@ img {
 
 .footer .container {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: baseline;
   padding-top: 60px;
   padding-bottom: 60px;
