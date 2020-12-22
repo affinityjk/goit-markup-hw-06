@@ -10,6 +10,8 @@
 
   --main-font: Roboto, san-serif;
   --secondary-font: Raleway, san-serif;
+
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Палитра цветов */
@@ -135,32 +137,31 @@ img {
 }
 
 /* Button */
-.button.primary {
+
+.button {
   display: flex;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 32px;
+  align-items: center;
   min-width: 200px;
   max-height: 50px;
-  color: var(--primary-white-color);
-  background-color: var(--accent-color);
 
   font-weight: 700;
   font-size: 16px;
-  line-height: 1.88;
-  align-items: center;
-  text-align: center;
+  line-height: 1.87;
   letter-spacing: 0.06em;
-  cursor: pointer;
 
+  cursor: pointer;
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
-.button.secondary {
-  color: var(--primary-text-color);
-  background-color: var(--secondary-bg-color);
-  border: none;
+.button.primary {
+  padding: 10px 32px;
+}
 
+.button.secondary {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.63;
@@ -171,7 +172,11 @@ img {
   padding: 6px 22px;
   min-width: 73px;
 
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--primary-text-color);
+  background-color: var(--secondary-bg-color);
+  border: none;
+
+  transition: all 250ms var(--timing-function);
 }
 
 .button.secondary:hover,
@@ -203,7 +208,7 @@ img {
 .logo-text {
   color: var(--secondary-accent-color);
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--timing-function);
 }
 
 .logo-footer {
@@ -252,7 +257,7 @@ img {
   letter-spacing: 0.02em;
 
   text-decoration: none;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--timing-function);
 }
 
 .site-nav .current.link {
@@ -283,8 +288,8 @@ img {
   margin-right: 10px;
 }
 
-.mail-icon:hover,
-.mail-icon:focus {
+.phone-icon:hover,
+.phone-icon:focus {
   fill: var(--accent-color);
 }
 
@@ -507,7 +512,7 @@ img {
   background-color: var(--primary-white-color);
   border-radius: 50%;
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms var(--timing-function);
 }
 
 .social-links-icon {
@@ -515,7 +520,7 @@ img {
   height: 20px;
   fill: var(--social-links-bg);
 
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms var(--timing-function);
 }
 
 .social-links-link:hover,
@@ -546,11 +551,11 @@ img {
 }
 
 .clients-list-link {
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms var(--timing-function);
 }
 
 .client-icon {
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms var(--timing-function);
 }
 
 .clients-list-link:hover,
@@ -607,28 +612,26 @@ img {
 
 .footer-address a {
   text-decoration: none;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms var(--timing-function);
 }
 
 .footer-address-link {
-  color: var(--primary-white-color);
-
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
+  color: var(--primary-white-color);
 }
 
 .mail-link,
 .tel-link {
-  color: rgba(255, 255, 255, 0.6);
-
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.71;
   letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .call-to-action {
@@ -638,6 +641,9 @@ img {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--primary-white-color);
+
+  display: block;
+  margin-bottom: 20px;
 }
 
 .footer .social-links-icon {
@@ -648,7 +654,6 @@ img {
 
 .footer .social-links-link {
   background-color: rgba(255, 255, 255, 0.1);
-  margin-top: 20px;
 }
 
 .footer .social-links-link:hover,
@@ -659,6 +664,57 @@ img {
 .footer-center {
   display: block;
   width: 206px;
+  margin-right: 93px;
+}
+
+/* Форма подписки в футере */
+
+.footer-form {
+  display: flex;
+}
+
+.email-input {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 16px;
+  margin-right: 12px;
+  width: 358px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+  background-color: transparent;
+  outline: none;
+}
+
+.email-input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.03em;
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.email-input:not(:placeholder-shown) {
+  background-color: var(--primary-white-color);
+}
+
+.footer-form.button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 29px;
+  padding-right: 28px;
+}
+
+.footer-form-icon {
+  margin-left: 10px;
+  width: 24px;
+  height: 24px;
+  fill: var(--primary-white-color);
 }
 
 /* Projects */
@@ -809,6 +865,7 @@ img {
   z-index: 100;
   top: 50%;
   left: 50%;
+  padding: 40px;
   transform: translate(-50%, -50%) scale(1);
 
   width: 528px;
@@ -835,12 +892,175 @@ img {
   height: 30px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  background-color: var(--primary-white-color);
+  background-color: transparent;
   cursor: pointer;
+}
+
+.close-icon {
+  transition: fill 250ms var(--timing-function);
+}
+
+.close-icon:hover,
+.close-icon:focus {
+  fill: var(--accent-color);
 }
 
 .is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+
+/* Форма в модальном окне */
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.modal-call-to-action {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  letter-spacing: 0.03em;
+
+  color: var(--primary-text-color);
+}
+
+.modal-form-field {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+
+  color: var(--secondary-text-color);
+
+  margin-bottom: 10px;
+}
+
+.modal-form-field.comments {
+  margin-bottom: 20px;
+}
+
+.modal-form-input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  padding-left: 42px;
+  cursor: pointer;
+
+  transition: border-color 250ms var(--timing-function);
+}
+
+.modal-form-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.modal-form-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+
+  width: 18px;
+  height: 18px;
+  fill: var(--primary-text-color);
+
+  transition: fill 250ms var(--timing-function);
+}
+
+.modal-form-input:hover + .modal-form-icon,
+.modal-form-input:focus + .modal-form-icon {
+  fill: var(--accent-color);
+}
+
+.modal-form-input-wrapper {
+  position: relative;
+
+  display: block;
+  margin-top: 4px;
+}
+
+.modal-form-comments {
+  width: 100%;
+  height: 120px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin-top: 4px;
+  resize: none;
+
+  transition: border-color 250ms var(--timing-function);
+}
+
+.modal-form-comments::placeholder {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.modal-form-comments:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.modal-form-policy-text::before {
+  display: inline-block;
+  content: "";
+  width: 16px;
+  height: 15px;
+  border: 2px solid var(--primary-text-color);
+  border-radius: 2px;
+  margin-right: 7px;
+
+  background-color: var(--primary-white-color);
+}
+
+.modal-form-policy-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+
+  display: flex;
+  align-items: center;
+}
+
+.modal-form-policy:checked + .modal-form-policy-text::before {
+  background-color: var(--accent-color);
+  /* background-image: url(../images/icons/check.svg); */
+  background-image: url('data:image/svg+xml,%3Csvg width="16" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M1.957 4.752l-.069-.066-.069.065-.888.842-.076.072.076.073 3.496 3.334.069.066.069-.066 7.504-7.158.076-.073-.076-.072-.882-.841-.069-.066-.069.066-6.553 6.246-2.539-2.422z" fill="%23fff" stroke="%23fff" stroke-width=".2"/%3E%3C/svg%3E');
+  border: 2px solid var(--accent-color);
+  outline: none;
+
+  display: flex;
+  align-items: center;
+}
+
+.modal-form-policy-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.contract-conditions {
+  text-decoration-skip-ink: none;
+  color: var(--accent-color);
+}
+
+.modal-form.button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 56px;
+  padding-right: 55px;
+  margin: 0 auto;
 }
